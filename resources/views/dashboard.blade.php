@@ -4,13 +4,40 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    <style>
+        type="text/css">
+        .Horario {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+    </style>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
+            <div class="Horario">
+                <!-- Horario en una tabla donde las horas estan verticalmente y los dias horizontales -->
+                    @livewire('show-horario')
             </div>
         </div>
     </div>
