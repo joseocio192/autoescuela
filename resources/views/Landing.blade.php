@@ -11,9 +11,9 @@
 <body style="background-color: rgb(17 24 39);">
     <livewire:navbar.navbar>
         <div class="container">
-            <h1>Bienvenidos a Autoescuela XYZ</h1>
+            <h1>Bienvenidos a Autoescuela</h1>
             <p>Tu camino hacia una conducción segura comienza aquí.</p>
-            <p>En Autoescuela XYZ, ofrecemos cursos de manejo para todos los niveles. Nuestros instructores certificados te ayudarán a adquirir las habilidades necesarias para conducir con confianza y seguridad.</p>
+            <p>En Autoescuela, ofrecemos cursos de manejo para todos los niveles. Nuestros instructores certificados te ayudarán a adquirir las habilidades necesarias para conducir con confianza y seguridad.</p>
             <h2>Nuestros Servicios</h2>
             <ul>
                 <li>Clases de manejo para principiantes</li>
