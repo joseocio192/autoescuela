@@ -23,6 +23,6 @@ class Alumno extends Model
     public function cursos() : BelongsToMany
     {
         return $this->belongsToMany(Curso::class, 'cursox_alumnos', 'alumno_id', 'curso_id')
-            ->withPivot('maestro_id', 'fecha_inscripcion', 'horas_cursadas', 'estado');
+            ->withPivot('maestro_id','horario', 'fecha_inscripcion', 'horas_cursadas', 'estado');
     }
 }

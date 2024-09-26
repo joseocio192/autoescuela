@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('alumno_id')->references('id')->on('alumnos');
             $table->primary(['curso_id', 'alumno_id']);
             $table->foreignId('maestro_id')->references('id')->on('maestros');
+            $table->string('horario');
             $table->date('fecha_inscripcion');
             $table->integer('horas_cursadas');
             $table->enum('estado', ['inscrito', 'cursando', 'terminado', 'cancelado']);

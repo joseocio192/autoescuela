@@ -12,6 +12,8 @@ class AlumnoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $alumno = new \App\Models\Alumno();
+        $alumno->user_id = 2;
+        $alumno->save();
     }
 }

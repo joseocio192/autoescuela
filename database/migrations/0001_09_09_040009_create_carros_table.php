@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('modelo');
             $table->string('marca');
             $table->string('color');
+            $table->string('placa');
+            $table->string('anio');
             $table->integer('kilometraje');
             $table->timestamps();
         });

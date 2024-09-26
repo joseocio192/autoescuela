@@ -12,6 +12,14 @@ class CursoxAlumnoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $cursoxalumno = new \App\Models\CursoxAlumno();
+        $cursoxalumno->curso_id = 1;
+        $cursoxalumno->alumno_id = 1;
+        $cursoxalumno->maestro_id = 1;
+        $cursoxalumno->horario = '08:00-10:00';
+        $cursoxalumno->fecha_inscripcion = now();
+        $cursoxalumno->horas_cursadas = 0;
+        $cursoxalumno->estado = 'Inscrito';
+        $cursoxalumno->save();
     }
 }

@@ -32,12 +32,19 @@
         td {
             background-color: #f9f9f9;
         }
+        h1 {
+            color: white;
+        }
     </style>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="Horario">
-                <!-- Horario en una tabla donde las horas estan verticalmente y los dias horizontales -->
-                    @livewire('show-horario')
+                    @if (Auth::user()->rol == 'alumno')
+                        @livewire('alumno.dashboard')
+                    @endif
+                    @if (Auth::user()->rol == 'maestro')
+                        @livewire('profesor.dashboard')
+                    @endif
             </div>
         </div>
     </div>

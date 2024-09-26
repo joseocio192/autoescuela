@@ -13,6 +13,7 @@ class CursoxAlumno extends Model
         'curso_id',
         'alumno_id',
         'maestro_id',
+        'horario',
         'fecha_inscripcion',
         'horas_cursadas',
         'estado',
