@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use App\Models\Alumno;
 
 new #[Layout('layouts.guest')] class extends Component
 {
@@ -29,7 +30,9 @@ new #[Layout('layouts.guest')] class extends Component
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered($user = User::create($validated)));
-
+        $alumno = new Alumno();
+        $alumno->user_id = $user->id;
+        $alumno->save();
         Auth::login($user);
 
         $this->redirect(route('dashboard', absolute: false), navigate: true);

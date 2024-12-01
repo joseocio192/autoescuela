@@ -20,7 +20,11 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::get('/curso/{curso}', [CursoController::class, 'show'])
-    ->name('curso.show');
+->name('curso.show');
+
+Route::get('inscripcion/{id}', [CursoController::class, 'inscripcion'])
+        ->middleware(['auth'])
+        ->name('inscripcion');
 
 Route::view('/welcome', 'welcome');
 
@@ -31,5 +35,6 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
 
 require __DIR__.'/auth.php';

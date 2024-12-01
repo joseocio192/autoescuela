@@ -32,5 +32,4 @@
             <h2 href="{{ route('contact') }}" wire:navigate>Contacto</h2>
         </div>
 </body>
-
 </html>

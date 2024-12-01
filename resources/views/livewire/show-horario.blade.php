@@ -39,7 +39,11 @@
                     @for ($i = 0; $i < 5; $i++)
                         <td class="{{ isset($highlightedCells[$index]) ? 'highlight' : '' }}">
                             @if (isset($highlightedCells[$index]))
-                                Curso
+                               @if ($rol == 'alumno')
+                                    <button wire:click="showModal({{ $index }}, {{ $i }})">Reservar</button>
+                               @else
+                                    <button wire:click="showModal({{ $index }}, {{ $i }})">Editar</button>
+                               @endif
                             @endif
                         </td>
                     @endfor

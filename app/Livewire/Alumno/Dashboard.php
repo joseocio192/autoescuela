@@ -26,7 +26,8 @@ class Dashboard extends Component
                 $status = "inscrito";
             }
         }
+        $todosLosCursos = \App\Models\Curso::all();
+        return view('livewire.alumno.dashboard', compact('cursos', 'status', 'todosLosCursos'));
 
-        return view('livewire.alumno.dashboard', compact('cursos', 'status'));
     }
 }
