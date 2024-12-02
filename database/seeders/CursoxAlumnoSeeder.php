@@ -19,7 +19,7 @@ class CursoxAlumnoSeeder extends Seeder
         $cursoxalumno->horario = '08:00-10:00';
         $cursoxalumno->fecha_inscripcion = now();
         $cursoxalumno->horas_cursadas = 0;
-        $cursoxalumno->estado = 'Inscrito';
+        $cursoxalumno->estado = 'inscrito';
         $cursoxalumno->save();
     }
 }
