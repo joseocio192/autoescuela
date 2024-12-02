@@ -10,7 +10,7 @@ Aqui fotografias del proyecto [aqui](#landing)
 ### Instalar el proyecto
 - Clonar el proyecto y moverse ahi
 - renombrar el archivo .env.example a .env
-- si usara sqlite dejarlo asi, si usara mysql debera poner lo siguiete con sus respectivos datos en el .env
+- si usara sqlite dejarlo asi, si usara mysql debera poner lo siguiente con sus respectivos datos en el .env
 
 OJO SI SE USA SQLITE TENDRA ERRORES CON ALGUNAS QUERYS
 
@@ -22,7 +22,7 @@ OJO SI SE USA SQLITE TENDRA ERRORES CON ALGUNAS QUERYS
 - npm run build
 - php artisan key:generate
 - php artisan migrate
-- darle yes si usamos sqlite
+- darle yes si usamos
 - php artisan migrate:fresh --seed
 - php artisan serve
 
