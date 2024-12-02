@@ -11,6 +11,7 @@ Aqui fotografias del proyecto [aqui](#landing)
 - Clonar el proyecto y moverse ahi
 - renombrar el archivo .env.example a .env
 - si usara sqlite dejarlo asi, si usara mysql debera poner lo siguiente con sus respectivos datos en el .env
+- - CREAR UNA BASE DE DATOS EN MYSQL CON EL NOMBRE QUE SE PUSO EN DB_DATABASE, solo la base de datos, el comando php artisan migrate se encargara de crear las tablas y --seed de rellenarlas
 
 OJO SI SE USA SQLITE TENDRA ERRORES CON ALGUNAS QUERYS
 
