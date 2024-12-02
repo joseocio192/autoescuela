@@ -51,3 +51,9 @@ Este proyecto usa laravel, breeze y livewire.
 ![image](https://github.com/user-attachments/assets/340567be-71b0-48ad-aa1c-d5f25c8360b9)
 ## Inscripcion 
 ![image](https://github.com/user-attachments/assets/41aa20e4-a9e9-4dda-9d39-d9d6392dbf9e)
+## vista maestro con clases
+![image](https://github.com/user-attachments/assets/165ced32-b420-42e2-b833-179b28b549ce)
+
+## vista maestro al clicker una clase
+![image](https://github.com/user-attachments/assets/0e2a7617-36c1-4b0e-87b6-4203a247bc71)
+
