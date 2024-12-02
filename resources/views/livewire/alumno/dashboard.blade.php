@@ -1,9 +1,7 @@
 
 <div>
     @if ($status == 'nada')
-        <a href="/curso/1">
-            <button>Ver Cursos</button>
-
+        <a href="/curso/1">ver curso</a>
     @endif
     @if ($status == 'inscrito')
         <h1>Ya estas inscrito en el curso {{$cursos->sortByDesc('created_at')->first()->nombre}}</h1>

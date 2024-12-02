@@ -22,9 +22,9 @@ Route::get('/contact', function () {
 Route::get('/curso/{curso}', [CursoController::class, 'show'])
 ->name('curso.show');
 
-Route::get('inscripcion/{id}', [CursoController::class, 'inscripcion'])
+Route::post('/pago', [CursoController::class, 'inscripcion'])
         ->middleware(['auth'])
-        ->name('inscripcion');
+        ->name('pago');
 
 Route::view('/welcome', 'welcome');
 

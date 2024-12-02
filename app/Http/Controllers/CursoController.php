@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Curso;
 use App\Models\User;
 use App\Models\Alumno;
+use App\Models\Maestro;
 use App\Models\CursoxAlumno;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,14 +26,17 @@ class CursoController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $alumno = Alumno::where('user_id', $user->id)->first();
-            $cursoxalumno = CursoxAlumno::where('curso_id', $curso)->where('alumno_id', $alumno->id)->first();
+            $cursoxalumno = CursoxAlumno::where('curso_id', $curso)
+                ->where('alumno_id', $alumno->id)
+                ->whereNotIn('estado', ['terminado', 'cancelado'])
+                ->first();
         }
         return view('curso', compact('cursoxalumno', 'cursos'));
     }
 
-    public function inscripcion($id)
+    public function inscripcion(Request $request)
     {
-        $curso = Curso::find($id);
+        $curso = Curso::find($request->id);
         $user = Auth::user();
         $fecha = date('Y-m-d H:i:s');
         $alumno = Alumno::where('user_id', $user->id)->first();
@@ -40,7 +44,49 @@ class CursoController extends Controller
         $cursoxalumno->curso_id = $curso->id;
         $cursoxalumno->alumno_id = $alumno->id;
         $cursoxalumno->maestro_id = 1;
-        $cursoxalumno->horario = '10:00-12:00';
+        $cursoxalumno->horario = $request->hora_inicio . '-' .$request->hora_fin;
+        //validate if the maestro is already enrolled in other courses that overlap in time
+        $maestros = Maestro::all();
+        $maestroDisponible = false;
+        foreach ($maestros as $m) {
+            $cursos = CursoxAlumno::where('maestro_id', $m->id)->whereNotIn('estado', ['terminado', 'cancelado'])
+                ->get();
+            $disponible = true;
+            foreach ($cursos as $c) {
+            $horario = explode('-', $c->horario);
+            $cursoHorario = explode('-', $cursoxalumno->horario);
+            if (count($horario) == 2 && count($cursoHorario) == 2) {
+                list($start, $end) = $horario;
+                list($newStart, $newEnd) = $cursoHorario;
+                if (($newStart < $end) && ($newEnd > $start)) {
+                $disponible = false;
+                break;
+                }
+            }
+            }
+            if ($disponible) {
+            $cursoxalumno->maestro_id = $m->id;
+            $maestroDisponible = true;
+            break;
+            }
+        }
+        if (!$maestroDisponible) {
+            return redirect()->route('curso.show', $curso->id)->with('error', 'No hay maestros disponibles para esta hora');
+        }
+        //validate if the user is already enrolled in other courses that overlap in time
+        $cursos = CursoxAlumno::where('alumno_id', $alumno->id)->whereNotIn('estado', ['terminado', 'cancelado'])
+        ->get();
+        foreach ($cursos as $c) {
+            $horario = explode('-', $c->horario);
+            $cursoHorario = explode('-', $cursoxalumno->horario);
+            if (count($horario) == 2 && count($cursoHorario) == 2) {
+                list($start, $end) = $horario;
+                list($newStart, $newEnd) = $cursoHorario;
+                if (($newStart < $end) && ($newEnd > $start)) {
+                    return redirect()->route('curso.show', $curso->id)->with('error', 'Ya estas inscrito en otro curso a la misma hora');
+                }
+            }
+        }
         $cursoxalumno->fecha_inscripcion = $fecha;
         $cursoxalumno->horas_cursadas = 0;
         $cursoxalumno->estado = 'inscrito';
@@ -53,21 +99,18 @@ class CursoController extends Controller
         $user = Auth::user();
         $hora = $request->hora;
         $dia = $request->dia;
+        $maestroid = $user->maestro->id;
         $curso = DB::select("
         SELECT *
         FROM cursox_alumnos ca
-        WHERE maestro_id = 1
+        WHERE maestro_id = ?
         AND ? BETWEEN SUBSTRING_INDEX(horario, '-', 1) AND SUBSTRING_INDEX(horario, '-', -1)
         order by horario desc
         limit 1
-    ", [$hora]);
-        Log::info($curso);
+    ",[$maestroid,$hora]);
+        $alumnoid = $curso[0]->alumno_id;
         $curso = Curso::find($curso[0]->curso_id);
-        $alumnoid = $curso->alumnos->first()->id;
-        Log::info($alumnoid);
         $alumno = Alumno::find($alumnoid);
-
-        Log::info('valiendo verga' . $alumno);
         switch ($dia) {
             case '0':
                 $dia = 'Lunes';
