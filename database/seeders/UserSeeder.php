@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         $user = new User();
         $user->name = 'Jose';
         $user->rol = 'maestro';
-        $user->email = 'joseociom@outlook.com';
+        $user->email = 'maestro@outlook.com';
         $user->password = bcrypt('123456');
         $user->email_verified_at = now();
         $user->remember_token = '123456';
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         $user = new User();
         $user->name = 'ilufote';
         $user->rol = 'alumno';
-        $user->email = 'ilufote@gmail.com';
+        $user->email = 'alumno@gmail.com';
         $user->password = bcrypt('123456');
         $user->email_verified_at = now();
         $user->remember_token = '123456';
