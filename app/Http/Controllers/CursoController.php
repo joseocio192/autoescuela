@@ -71,7 +71,8 @@ class CursoController extends Controller
             }
         }
         if (!$maestroDisponible) {
-            return redirect()->route('curso.show', $curso->id)->with('error', 'No hay maestros disponibles para esta hora');
+            Log::info('No hay maestros disponibles para el horario seleccionado');
+            return redirect()->back()->with('alert', 'No hay maestros disponibles para el horario seleccionado');
         }
         //validate if the user is already enrolled in other courses that overlap in time
         $cursos = CursoxAlumno::where('alumno_id', $alumno->id)->whereNotIn('estado', ['terminado', 'cancelado'])
@@ -83,7 +84,9 @@ class CursoController extends Controller
                 list($start, $end) = $horario;
                 list($newStart, $newEnd) = $cursoHorario;
                 if (($newStart < $end) && ($newEnd > $start)) {
-                    return redirect()->route('curso.show', $curso->id)->with('error', 'Ya estas inscrito en otro curso a la misma hora');
+                    Log::info('Ya estas inscrito en otro curso a la misma hora');
+
+                    return redirect()->back()->with('alert', 'Ya estas inscrito en otro curso a la misma hora');
                 }
             }
         }

@@ -1,4 +1,4 @@
-p {
+p, form {
     font-size: 20px;
     color: white;
     text-align: center;
@@ -7,6 +7,7 @@ p {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 
 h1 {
     font-size: 30px;
@@ -80,7 +81,7 @@ body {
 
 .navbar a:hover,
 .dropdown:hover .dropbtn {
-    background-color: red;
+    background-color: #ddd;
 }
 
 .dropdown-content {
@@ -115,17 +116,42 @@ body {
     text-align: center;
     padding-left: 30%;
 }
+.navbar a.clase:hover {
+    background-color:rgb(31, 41, 55);
+}
+
 
 .navbar a.split {
     float: right;
-    background-color: #020ec0;
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    text-align: center; /* Centra el texto */
+    border: 2px solid currentColor; /* Borde del color actual del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado */
+    font-weight: bold; /* Hace el texto más grueso */
+    transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
     color: white;
+}
+
+.navbar a.split:hover {
+    background-color: currentColor; /* Fondo toma el color del texto */
+    color: white; /* Texto cambia a blanco */
 }
 
 .navbar a.split_reg {
     float: right;
-    background-color: red;
-    color: white;
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    text-align: center; /* Centra el texto */
+    border: 2px solid currentColor; /* Borde del color actual del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado */
+    font-weight: bold; /* Hace el texto más grueso */
+    transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
+}
+
+.navbar a.split_reg:hover {
+    background-color: currentColor; /* Fondo toma el color del texto */
+    color: white; /* Texto cambia a blanco */
 }
 
 .google-map {

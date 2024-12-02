@@ -21,6 +21,7 @@
                 <h1>Clase de {{$curso->nombre}}</h1>
                 <p>Esta es la clase de {{ $alumno->user->name }} favor de recogerlo a esa hora</p>
                 <p>La clase seleccionada es a las {{ $hora }} del día {{ $dia }}</p>
+                <button style="color: white">Iniciar clase</button><br>
                 <a href="/dashboard">Volver al horario</a>
             </div>
         </div>
