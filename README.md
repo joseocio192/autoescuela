@@ -15,13 +15,19 @@ Aqui fotografias del proyecto [aqui](#landing)
 - Ejecutar los siguientes comandos en la carpeta del proyecto
 - composer global require laravel/installer
 - composer install
+- npm install
+- npm run build
 - php artisan key:generate
 - php artisan migrate
+- darle yes si usamos sqlite
 - php artisan migrate:fresh --seed
 - php artisan serve
 
 Ahora el proyecto estaria corriendo correctamente si tienen algun problema pueden dejarlo en los issues :)
-
+el usuario de el profesor es maestro@outlook.com
+el usuario de alumno es alumno@gmail.com
+la contraseña de ambos es 123546
+esta informacion de inicio se puede modificar en [el seeder](https://github.com/joseocio192/autoescuela/blob/master/database/seeders/UserSeeder.php)
 
 ### Porque elegi estas tecnologias?
 Este proyecto usa laravel, breeze y livewire.
