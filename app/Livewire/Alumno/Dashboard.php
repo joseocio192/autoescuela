@@ -11,11 +11,9 @@ class Dashboard extends Component
     {
         $user = \Illuminate\Support\Facades\Auth::user();
         $alumno = $user->alumno;
-        Log::info($alumno);
         try {
             $cursos = $alumno->cursos;
         } catch (\Exception $e) {
-            Log::info($e->getMessage());
             $cursos = collect();
         }
         $status = "nada";

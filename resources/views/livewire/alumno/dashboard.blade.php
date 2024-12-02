@@ -9,6 +9,9 @@
         <h1>Ya estas inscrito en el curso {{$cursos->sortByDesc('created_at')->first()->nombre}}</h1>
         @livewire('ShowHorario')
     @endif
+    @if ($status == 'verclase')
+        @livewire('verclase')
+    @endif
     <style>
         .card {
             margin: 10px;

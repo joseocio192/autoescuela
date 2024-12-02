@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\Log;
+use App\Models\Alumno;
 use Livewire\Component;
 
 class ShowHorario extends Component
@@ -26,7 +27,6 @@ class ShowHorario extends Component
             $maestro = $user->maestro;
             $cursos = $maestro->cursos;
             $timeSlots = $cursos->pluck('pivot.horario')->toArray();
-            $cursoNombre = $cursos->sortByDesc('pivot.horario')->first()->nombre;
             return view('livewire.show-horario', compact('timeSlots', 'cursoNombre','rol'));
         }
     }

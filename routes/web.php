@@ -36,5 +36,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::post('verclase', [CursoController::class, 'verclase'])
+    ->middleware(['auth'])
+    ->name('verclase');
 
 require __DIR__.'/auth.php';

@@ -39,9 +39,14 @@
                         <td class="{{ isset($highlightedCells[$index]) ? 'highlight' : '' }}">
                             @if (isset($highlightedCells[$index]))
                                @if ($rol == 'alumno')
-                                <button style="color: white">clase {{$hora}},{{$i}} </button>
+                                <button style="color: white">Clase</button>
                                @else
-                                <button>Editar clase</button>
+                                <form action="/verclase" method="POST" >
+                                    @csrf
+                                    <input type="hidden" name="hora" value="{{ $hora }}">
+                                    <input type="hidden" name="dia" value="{{ $i }}">
+                                    <button style="color: white">Clase</button>
+                                </form>
                                @endif
                             @endif
                         </td>
@@ -53,6 +58,13 @@
     <style>
         .highlight {
             background-color: rgb(31 41 55 / var(--tw-bg-opacity))
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+            color: white;
+            border-color: rgb(31 41 55 / var(--tw-border-opacity));
         }
     </style>
 </div>

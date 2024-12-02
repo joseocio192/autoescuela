@@ -9,6 +9,9 @@ use App\Models\User;
 use App\Models\Alumno;
 use App\Models\CursoxAlumno;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+use function Laravel\Prompts\select;
 
 class CursoController extends Controller
 {
@@ -16,7 +19,7 @@ class CursoController extends Controller
     {
         $cursos = Curso::find($curso);
         //Log del curso
-        Log::info($cursos);
+
         $cursoxalumno = null;
        //check if the user is logged in
         if (Auth::check()) {
@@ -43,5 +46,54 @@ class CursoController extends Controller
         $cursoxalumno->estado = 'inscrito';
         $cursoxalumno->save();
         return view('pago', compact('curso', 'user', 'fecha'));
+    }
+
+    public function verclase(Request $request)
+    {
+        $user = Auth::user();
+        $hora = $request->hora;
+        $dia = $request->dia;
+        $curso = DB::select("
+        SELECT *
+        FROM cursox_alumnos ca
+        WHERE maestro_id = 1
+        AND ? BETWEEN SUBSTRING_INDEX(horario, '-', 1) AND SUBSTRING_INDEX(horario, '-', -1)
+        order by horario desc
+        limit 1
+    ", [$hora]);
+        Log::info($curso);
+        $curso = Curso::find($curso[0]->curso_id);
+        $alumnoid = $curso->alumnos->first()->id;
+        Log::info($alumnoid);
+        $alumno = Alumno::find($alumnoid);
+
+        Log::info('valiendo verga' . $alumno);
+        switch ($dia) {
+            case '0':
+                $dia = 'Lunes';
+                break;
+            case '1':
+                $dia = 'Martes';
+                break;
+            case '2':
+                $dia = 'Miercoles';
+                break;
+            case '3':
+                $dia = 'Jueves';
+                break;
+            case '4':
+                $dia = 'Viernes';
+                break;
+            case '5':
+                $dia = 'Sabado';
+                break;
+            case '6':
+                $dia = 'Domingo';
+                break;
+            default:
+                $dia = 'Dia no valido';
+                break;
+        }
+        return view('clase', compact('curso', 'alumno', 'hora', 'dia', 'user','alumno'));
     }
 }

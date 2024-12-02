@@ -31,7 +31,6 @@ class Maestro extends Model
 
     public function cursos(): BelongsToMany
     {
-        Log::info('Maestro: ' . $this->id);
         return $this->belongsToMany(Curso::class, 'cursox_alumnos', 'maestro_id', 'curso_id')->withPivot('horario', 'fecha_inscripcion', 'horas_cursadas', 'estado');
     }
 
