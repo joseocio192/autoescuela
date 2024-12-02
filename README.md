@@ -10,7 +10,7 @@ Aqui fotografias del proyecto [aqui](#landing)
 ### Instalar el proyecto
 - Clonar el proyecto y moverse ahi
 - renombrar el archivo .env.example a .env
-- si usara sqlite dejarlo asi, si usara mysql debera poner lo siguiete con sus respectivos datos obvio
+- si usara sqlite dejarlo asi, si usara mysql debera poner lo siguiete con sus respectivos datos en el .env
 
 ![image](https://github.com/user-attachments/assets/6f31795d-08ad-4ca8-9223-e2e9e3e0838a)
 - Ejecutar los siguientes comandos en la carpeta del proyecto
