@@ -13,22 +13,6 @@
         .card {
             margin: 10px;
         }
-
-        button {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
         p, h2{
             color: white;
         }

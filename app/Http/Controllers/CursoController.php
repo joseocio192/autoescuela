@@ -17,7 +17,14 @@ class CursoController extends Controller
         $cursos = Curso::find($curso);
         //Log del curso
         Log::info($cursos);
-        return view('curso', compact('cursos'));
+        $cursoxalumno = null;
+       //check if the user is logged in
+        if (Auth::check()) {
+            $user = Auth::user();
+            $alumno = Alumno::where('user_id', $user->id)->first();
+            $cursoxalumno = CursoxAlumno::where('curso_id', $curso)->where('alumno_id', $alumno->id)->first();
+        }
+        return view('curso', compact('cursoxalumno', 'cursos'));
     }
 
     public function inscripcion($id)

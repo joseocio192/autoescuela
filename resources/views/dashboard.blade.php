@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <style>
-        type="text/css">
+        <type="text/css">
         .Horario {
             display: flex;
             justify-content: center;

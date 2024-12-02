@@ -18,7 +18,6 @@
                 $highlightedCells = [];
 
                 // Example input: ['08:00-10:00', '12:00-14:00']
-                // $timeSlots = ['08:00-10:00', '12:00-14:00']; // Replace with actual data from the controller
                 foreach ($timeSlots as $timeSlot) {
                     if (strpos($timeSlot, '-') !== false) {
                         [$start, $end] = explode('-', $timeSlot);
@@ -40,9 +39,9 @@
                         <td class="{{ isset($highlightedCells[$index]) ? 'highlight' : '' }}">
                             @if (isset($highlightedCells[$index]))
                                @if ($rol == 'alumno')
-                                    <button wire:click="showModal({{ $index }}, {{ $i }})">Reservar</button>
+                                <button style="color: white">clase {{$hora}},{{$i}} </button>
                                @else
-                                    <button wire:click="showModal({{ $index }}, {{ $i }})">Editar</button>
+                                <button>Editar clase</button>
                                @endif
                             @endif
                         </td>
@@ -53,7 +52,7 @@
     </table>
     <style>
         .highlight {
-            background-color: yellow; /* Change this to your desired color */
+            background-color: rgb(31 41 55 / var(--tw-bg-opacity))
         }
     </style>
 </div>

@@ -21,7 +21,11 @@
         <p>El curso tiene un costo de {{$cursos->costo}}$ y consiste en {{$cursos->horas}} horas de clases</p>
         @if (Auth::user())
             @if (Auth::user()->rol == 'alumno')
-                <a href="{{ route('inscripcion', ['id' => $cursos->id]) }}" class="split_reg">Inscribirme</a>
+                @if ($cursoxalumno == null)
+                    <a href="{{ route('pago', ['id' => $cursos->id]) }}" class="split_reg">Inscribirme</a>
+                @else
+                    <p>Ya estas inscrito en este curso</p>
+                @endif
             @endif
         @else
        <p> <a href="{{ route('register') }}" class="split_reg">Registrate</a></p>
