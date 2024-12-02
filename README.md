@@ -6,7 +6,7 @@ Aqui fotografias del proyecto [aqui](#landing)
 ### Pasos previos
 - instalar php
 - instalar mysql o dejar el default del .env que es sqlite
-- instalar composer
+- instalar [composer](https://getcomposer.org/download/)
 ### Instalar el proyecto
 - Clonar el proyecto y moverse ahi
 - renombrar el archivo .env.example a .env
